@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
-import './App.css';
+import ColorRenderer from './ColorRenderer';
+ ColorRenderer = () => {
+  const [selectedColor, setSelectedColor] = useState('#FF5733'); 
 
-function App() {
-  const [color, setColor] = useState('#FFFFFF');
-
-  const handleColorChange = (event) => {
-    setColor(event.target.value);
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Color Renderer</h1>
-        <input
-          type="color"
-          value={color}
-          onChange={handleColorChange}
-        />
-        <div
-          className="color-box"
-          style={{ backgroundColor: color }}
-        ></div>
-        <p>Selected Color: {color}</p>
-      </header>
+    <div>
+      <h1>Simple Color Renderer</h1>
+      <div style={{ backgroundColor: selectedColor, width: '100px', height: '100px' }}></div>
+      <input type="color" value={selectedColor} onChange={(e) => handleColorChange(e.target.value)} />
+      <p>Selected Color: {selectedColor}</p>
     </div>
   );
-}
+};
 
-export default App;
+export default ColorRenderer;
