@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ColorRenderer = () => {
-  const [selectedColor, setSelectedColor] = useState('#FF5733'); // Default color: Orange
+  const [selectedColor, setSelectedColor] = useState('#FF5733'); 
 
   return (
     <div>
