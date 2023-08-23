@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 const FormValidator = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
- 
-
-  const validateEmail = (email) => {
-    
+ const [passwordConfirm, setPasswordConfirm] = useState('');
+const [validateEmail, setvalidateEmail]  = useState(false);
 
   const validatePassword = (password) => {
     return password.length >= 6;
@@ -15,18 +13,21 @@ const FormValidator = () => {
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
-    if (!validateEmail(newEmail)) {
-   
+    setvalidateEmail(validateEmailFormat(newEmail));
+    
+  
   };
-
+  const validateEmailFormat = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    if (!validatePassword(newPassword)) {
-      setPasswordError('Password must be at least 6 characters long');
-    } else {
-      setPasswordError('');
-    }
+    if (!validatePassword(newPassword)) 
+    {setPasswordConfirm(true)};
+   
+
   };
 
   const handleSubmit = (e) => {
@@ -44,12 +45,12 @@ const FormValidator = () => {
         <div>
           <label>Email:</label>
           <input type="email" value={email} onChange={handleEmailChange} />
-          {emailError && <p>{emailError}</p>}
+          {/* {emailError && <p>{emailError}</p>} */}
         </div>
         <div>
           <label>Password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
-          {passwordError && <p>{passwordError}</p>}
+          {/* {passwordError && <p>{passwordError}</p>} */}
         </div>
         <button type="submit">Submit</button>
       </form>
