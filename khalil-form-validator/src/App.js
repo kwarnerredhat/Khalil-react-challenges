@@ -3,13 +3,10 @@ import React, { useState } from 'react';
 const FormValidator = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+ 
 
   const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+    
 
   const validatePassword = (password) => {
     return password.length >= 6;
@@ -19,10 +16,7 @@ const FormValidator = () => {
     const newEmail = e.target.value;
     setEmail(newEmail);
     if (!validateEmail(newEmail)) {
-      setEmailError('Invalid email format');
-    } else {
-      setEmailError('');
-    }
+   
   };
 
   const handlePasswordChange = (e) => {

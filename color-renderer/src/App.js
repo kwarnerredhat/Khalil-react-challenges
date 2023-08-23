@@ -13,6 +13,7 @@ const ColorRenderer = () => {
         onChange={(e) => setSelectedColor(e.target.value)}
       />
       <p>Selected Color: {selectedColor}</p>
+
     </div>
   );
 };
