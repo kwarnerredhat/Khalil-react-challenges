@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 
-function App() {
+function ScoreKeeper() {
+ 
+  const [score, setScore] = useState(0);
+
+ 
+  useEffect(() => {
+
+    console.log(`Score changed: ${score}`);
+  }, [score]); 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Score: {score}</p>
+      <button onClick={() => setScore(score + 1)}>Increase</button>
+      <button onClick={() => setScore(score - 1)}>Decrease</button>
     </div>
   );
 }
 
-export default App;
+export default ScoreKeeper;
