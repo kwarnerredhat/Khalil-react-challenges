@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 
-function App() {
+function DoubleClickAlert() {
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    const handleDoubleClick = () => {
+      alert('Double-click detected!');
+    };
+
+    if (isActive) {
+      window.addEventListener('dblclick', handleDoubleClick);
+    }
+
+    return () => {
+      window.removeEventListener('dblclick', handleDoubleClick);
+    };
+  }, [isActive]);
+
+  const KhalilComponent = () => {
+    setIsActive(!isActive);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={KhalilComponent}>Toggle Component</button>
+      
     </div>
   );
 }
 
-export default App;
+export default DoubleClickAlert;
+
