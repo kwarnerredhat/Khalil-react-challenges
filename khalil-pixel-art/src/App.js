@@ -1,24 +1,17 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { ColorProvider } from './context/ColorContext';
+import ColorPicker from './components/ColorPicker';
+import PixelArtGrid from './components/PixelArtGrid';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorProvider>
+      <div className="App">
+        <ColorPicker />
+        <PixelArtGrid rows={10} cols={10} />
+      </div>
+    </ColorProvider>
   );
 }
 
